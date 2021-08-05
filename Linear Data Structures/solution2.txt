@@ -1,0 +1,28 @@
+ALGORITHM Sum Solution2
+VAR set1: ARRAY_OF INTEGER [4] := [3, 1, 7, 9];
+VAR set2: ARRAY_OF INTEGER [5] := [2, 4, 1, 9, 3];
+VAR set3: ARRAY_OF INTEGER [set1.length + set2.length] := [];
+VAR htab : HASH_TABLE<INTEGER,INTEGER>;
+VAR sum: INTEGER := 0;
+VAR count: INTEGER;
+VAR j:INTEGER;
+VAR i:INTEGER;
+
+BEGIN
+    set3 = set1.concat(set2)
+    FOR i FROM 0 TO set3.length STEP 1 Do
+        IF (htab.lookup(set3[i] = true)) THEN
+            count := htab.get(set3[i]);
+            htab.insert(set3[i], count+1);
+        ELSE
+            htab.insert(set3[i], 1);
+        END_IF
+    END_FOR
+
+    set<INTEGER> set := htab.keySet();
+    Iterator<INTEGER> iterator := set.iterator();
+    WHILE (itarator.key = 1)
+        sum := sum + itarator.value;
+    END_WHILE
+
+    read(sum);
